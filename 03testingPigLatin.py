@@ -22,28 +22,47 @@ print("------ Learning some pig-latin --------")
 
 # First write a test (a basic assertion, for now).  Start simple. 
 
-
+def testPigLatin():
+    assert toPigLatin("latin") == "atinlay"
+    assert toPigLatin("pig") == "igpay"
+    assert toPigLatin("friends") == "iendsfray"
+    assert toPigLatin("why") == "whyay" #por que
 # THEN implement the solution.  Repeat 
 
+def toPigLatin(word):
+    word = word.strip()
+    if word=="":
+        return ""
+    vLoc = 0
+    for aChar in word:
+        if aChar in "aeiouAEIOU":
+            break
+        vLoc += 1
 
+    beggining=word[:vLoc]
+    end=word[vLoc:]
+    extrasuffix = "ay"
+    if vLoc == 0:
+        extrasuffix = "way"
+
+
+    result = end+beggining+"ay"
+    return result
+
+print("------ Learning some pig-latin --------")
+testPigLatin()
 # Better way than basic assertions: python's unittest.TestCase
 # Let's make them for entire phrases we can pig-latin-ize
 
 
 # THEN implement the solution for making phrases
 
+def wordsToPigLatin(phrase):
+    pass
 
+import unittest
 
-
-
-
-
-
-
-
-
-
-
+unittest.main()  # runs all the tests in this file
 
 import sys
 sys.exit()  #stops below from running
